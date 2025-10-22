@@ -28,6 +28,13 @@ export default function PracticeScreen() {
           color="#b16e6eff"
         />
       </View>
+      <View style={[styles.buttonContainer, { marginTop: 20 }]}>
+        <Button
+          title="English Grammar Mechanics"
+          onPress={() => router.push('/english-mechanics')}
+          color="#b16e6eff"
+          />
+      </View>
     </LinearGradient>
   );
 }
