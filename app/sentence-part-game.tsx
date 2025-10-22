@@ -1,25 +1,55 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 
-const sentenceData = {
-  sentence: ['John', 'and', 'Mary', 'went', 'to', 'the', 'park.'],
-  parts: {
-    subject: 'John',
-    conjunction: 'and',
-    predicate: 'went',
-    preposition: 'to',
-    directObject: 'park.',
+const sentenceBank = [
+  {
+    sentence: ['John', 'and', 'Mary', 'went', 'to', 'the', 'park.'],
+    parts: {
+      subject: 'John',
+      conjunction: 'and',
+      predicate: 'went',
+      preposition: 'to',
+      directObject: 'park.',
+    },
+    order: ['subject', 'conjunction', 'predicate', 'preposition', 'directObject'],
   },
-  order: ['subject', 'conjunction', 'predicate', 'preposition', 'directObject'],
-};
+  {
+    sentence: ['The', 'cat', 'sat', 'on', 'the', 'mat.'],
+    parts: {
+      subject: 'cat',
+      predicate: 'sat',
+      preposition: 'on',
+      directObject: 'mat.',
+    },
+    order: ['subject', 'predicate', 'preposition', 'directObject'],
+  },
+  {
+    sentence: ['Paul', 'wrote', 'a', 'letter', 'to', 'the', 'church.'],
+    parts: {
+      subject: 'Paul',
+      predicate: 'wrote',
+      directObject: 'letter',
+      preposition: 'to',
+      indirectObject: 'church.',
+    },
+    order: ['subject', 'predicate', 'directObject', 'preposition', 'indirectObject'],
+  },
+];
 
-type PartKey = keyof typeof sentenceData.parts;
+type PartKey = keyof typeof sentenceBank[number]['parts'];
 
 export default function SentencePartGame() {
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [feedback, setFeedback] = useState('');
   const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const [sentenceData, setSentenceData] = useState(sentenceBank[0]);
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * sentenceBank.length);
+    setSentenceData(sentenceBank[randomIndex]);
+  }, []);
 
   const currentPart = sentenceData.order[currentPartIndex] as PartKey;
   const correctWord = sentenceData.parts[currentPart];
