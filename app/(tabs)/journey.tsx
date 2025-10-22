@@ -1,14 +1,14 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, Text } from 'react-native';
 
-export default function HomeScreen() {
+export default function JourneyScreen() {
   return (
     <LinearGradient
-      colors={['#a8edea', '#fed6e3']}
+      colors={['#cfd9df', '#e2ebf0']}
       style={styles.container}
     >
-      <Text style={styles.title}>Learn Koine Greek 📜</Text>
-      <Text style={styles.subtitle}>Your daily dose of ancient wisdom.</Text>
+      <Text style={styles.title}>Journey</Text>
+      <Text style={styles.subtitle}>Follow your path through lessons and mastery.</Text>
     </LinearGradient>
   );
 }

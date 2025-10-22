@@ -1,0 +1,12 @@
+[
+  { "greek": "λόγος", "english": "word, speech, reason", "partOfSpeech": "noun" },
+  { "greek": "ἀγάπη", "english": "love", "partOfSpeech": "noun" },
+  { "greek": "ἄνθρωπος", "english": "man, human being", "partOfSpeech": "noun" },
+  { "greek": "πιστεύω", "english": "I believe", "partOfSpeech": "verb" },
+  { "greek": "βασιλεία", "english": "kingdom", "partOfSpeech": "noun" },
+  { "greek": "θεός", "english": "God", "partOfSpeech": "noun" },
+  { "greek": "κύριος", "english": "lord, master", "partOfSpeech": "noun" },
+  { "greek": "πνεῦμα", "english": "spirit, breath", "partOfSpeech": "noun" },
+  { "greek": "γῆ", "english": "earth, land", "partOfSpeech": "noun" },
+  { "greek": "οὐρανός", "english": "heaven, sky", "partOfSpeech": "noun" }
+]
