@@ -35,6 +35,25 @@ export default function PracticeScreen() {
           color="#b16e6eff"
           />
       </View>
+
+      <Text style={styles.title}>Games</Text>
+      <Text style={styles.subtitle}>Practice Your Mechanics With Some Games</Text>
+
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Match the Letter"
+          onPress={() => router.push('/letter-game')}
+          color="#b16e6eff"
+        />
+      </View>
+      <View style={[styles.buttonContainer, { marginTop: 20 }]}>
+        <Button
+          title="Select the Sentence Part"
+          onPress={() => router.push('/sentence-part-game')}
+          color="#b16e6eff"
+          />
+      </View>
+
     </LinearGradient>
   );
 }
