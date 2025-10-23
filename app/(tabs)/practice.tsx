@@ -35,6 +35,13 @@ export default function PracticeScreen() {
           color="#b16e6eff"
           />
       </View>
+      <View style={[styles.buttonContainer, { marginTop: 20 }]}>
+        <Button
+          title="Greek Vocabulary"
+          onPress={() => router.push('/greek-vocabulary')}
+          color="#b16e6eff"
+          />
+      </View>
 
       <Text style={styles.title}>Games</Text>
       <Text style={styles.subtitle}>Practice Your Mechanics With Some Games</Text>

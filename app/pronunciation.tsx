@@ -11,6 +11,26 @@ const greekLetters = [
   { id: '5', upper: 'Ε', lower: 'ε', name: 'Epsilon', sound: 'e as in met' },
 ];
 
+// Koine Greek diphthongs
+const diphthongs = [
+  { id: '6', lower: 'αι', name: 'ai', sound: 'like “eye”' },
+  { id: '7', lower: 'ει', name: 'ei', sound: 'like “ay” in say' },
+  { id: '8', lower: 'οι', name: 'oi', sound: 'like “oy” in boy' },
+  { id: '9', lower: 'αυ', name: 'au', sound: 'like “ow” in cow' },
+  { id: '10', lower: 'ου', name: 'ou', sound: 'like “oo” in food' },
+  { id: '11', lower: 'υι', name: 'ui', sound: 'like “wee”' },
+  { id: '12', lower: 'ευ', name: 'eu', sound: 'like “eh-oo” or “you” (depending on context)' },
+  { id: '13', lower: 'ηυ', name: 'ēu', sound: 'like “ay-oo”' },
+];
+
+// Combined list with a header separator
+const combinedData = [
+  { type: 'header', title: 'Single Letters' },
+  ...greekLetters.map((item) => ({ type: 'letter', ...item })),
+  { type: 'header', title: 'Diphthongs' },
+  ...diphthongs.map((item) => ({ type: 'diphthong', ...item })),
+];
+
 // Reusable flip-card component
 function GreekLetterCard({ upper, lower, name, sound }: any) {
   const [flipped, setFlipped] = useState(false);
@@ -43,7 +63,7 @@ function GreekLetterCard({ upper, lower, name, sound }: any) {
             { transform: [{ perspective: 1000 }, { rotateY: frontInterpolate }] },
           ]}
         >
-          <Text style={styles.letter}>{upper}{lower}</Text>
+          <Text style={styles.letter}>{upper ? `${upper}${lower}` : lower}</Text>
           <Text style={styles.name}>{name}</Text>
         </Animated.View>
 
@@ -68,9 +88,15 @@ export default function PronunciationScreen() {
     <LinearGradient colors={['#89f7fe', '#66a6ff']} style={styles.container}>
       <Text style={styles.title}>Greek Pronunciation Guide</Text>
       <FlatList
-        data={greekLetters}
-        renderItem={({ item }) => <GreekLetterCard {...item} />}
-        keyExtractor={(item) => item.id}
+        data={combinedData}
+        renderItem={({ item }) =>
+          item.type === 'header' ? (
+            <Text style={styles.sectionHeader}>{item.title}</Text>
+          ) : (
+            <GreekLetterCard {...item} />
+          )
+        }
+        keyExtractor={(item, index) => `${item.type}-${index}`}
         contentContainerStyle={styles.list}
       />
     </LinearGradient>
@@ -88,10 +114,18 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  sectionHeader: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginTop: 30,
+    marginBottom: 10,
   },
   list: {
     alignItems: 'center',
+    paddingBottom: 80,
   },
   cardContainer: {
     marginBottom: 20,
