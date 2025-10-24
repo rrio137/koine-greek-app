@@ -37,7 +37,7 @@ export default function HomeScreen() {
   return (
     <LinearGradient colors={['#a8edea', '#fed6e3']} style={styles.container}>
       <Text style={styles.title}>Learn Koine Greek 📜</Text>
-      <Text style={styles.subtitle}>Your daily dose of ancient wisdom.</Text>
+      <Text style={styles.subtitle}>Learn to speak the language of the Scriptures</Text>
       <View style={[styles.textContainer, { marginTop: 20 }]}>
         <Animated.Text
           style={[

@@ -36,7 +36,7 @@ export default function FlashcardScreen() {
       </View>
 
       <View style={styles.buttonWrapper}>
-        <Button title="Next Word" onPress={nextCard} color="#ac3737ff" />
+        <Button title="Next Word" onPress={nextCard} color="#6ed373ff" />
       </View>
     </LinearGradient>
   );
